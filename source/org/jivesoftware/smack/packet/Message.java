@@ -425,6 +425,9 @@ public class Message extends Packet {
         if (type != Type.normal) {
             buf.append(" type=\"").append(type).append("\"");
         }
+		if (messageId != null) {
+			buf.append(" messageid=\"").append(messageId).append("\"");
+		}
         buf.append(">");
         // Add the subject in the default language
         Subject defaultSubject = getMessageSubject(null);

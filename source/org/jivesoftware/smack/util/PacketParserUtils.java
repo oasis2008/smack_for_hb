@@ -78,6 +78,7 @@ public class PacketParserUtils {
         message.setTo(parser.getAttributeValue("", "to"));
         message.setFrom(parser.getAttributeValue("", "from"));
         message.setType(Message.Type.fromString(parser.getAttributeValue("", "type")));
+		message.setMessageId(parser.getAttributeValue("", "messageid"));
         String language = getLanguageAttribute(parser);
         
         // determine message's default language
