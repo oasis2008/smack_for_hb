@@ -79,6 +79,7 @@ public class PacketParserUtils {
         message.setFrom(parser.getAttributeValue("", "from"));
         message.setType(Message.Type.fromString(parser.getAttributeValue("", "type")));
 		message.setMessageId(parser.getAttributeValue("", "messageid"));
+		message.setDateTime(parser.getAttributeValue("", "datetime"));
         String language = getLanguageAttribute(parser);
         
         // determine message's default language
@@ -126,6 +127,12 @@ public class PacketParserUtils {
                         message.addBody(xmlLang, body);
                     }
                 }
+				else if (elementName.equals("playload")) {
+					String attachmentType = parser.getAttributeValue("", "type");
+					String attachmentId = parser.getAttributeValue("", "id");
+					message.setAttachmentType(attachmentType);
+					message.setAttachmentId(attachmentId);
+				}
                 else if (elementName.equals("thread")) {
                     if (thread == null) {
                         thread = parser.nextText();

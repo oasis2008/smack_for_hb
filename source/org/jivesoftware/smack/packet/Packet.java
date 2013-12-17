@@ -113,10 +113,6 @@ public abstract class Packet {
     private final Map<String,Object> properties = new HashMap<String, Object>();
     private XMPPError error = null;
 
-	//----------------------------------
-	private String messageId = null;
-	//----------------------------------
-
     public Packet() {
     }
 
@@ -511,13 +507,4 @@ public abstract class Packet {
         return result;
     }
 
-	//-------------------------------------
-	public void setMessageId(String messageId) {
-		this.messageId = messageId;
-	}
-
-	public String getMessageId() {
-		return this.messageId;
-	}
-	//-------------------------------------
 }

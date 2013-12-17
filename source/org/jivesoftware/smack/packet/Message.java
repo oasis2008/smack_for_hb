@@ -57,6 +57,12 @@ public class Message extends Packet {
     private final Set<Subject> subjects = new HashSet<Subject>();
     private final Set<Body> bodies = new HashSet<Body>();
 
+    // custom stanza
+    private String messageId = null;
+	private String attachmentType = null;
+	private String attachmentId = null;
+	private String dateTime = null;
+
     /**
      * Creates a new, "normal" message.
      */
@@ -672,4 +678,37 @@ public class Message extends Packet {
         }
 
     }
+
+	public void setAttachmentType(String type) {
+		this.attachmentType = type;
+	}
+
+	public String getAttachmentType() {
+		return this.attachmentType;
+	}
+
+	public void setAttachmentId(String id) {
+		this.attachmentId = id;
+	}
+	
+	public String getAttachmentId() {
+		return this.attachmentId;
+	}
+	
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+
+	public String getMessageId() {
+		return this.messageId;
+	}
+	
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+	
+	public String getDateTime() {
+		return this.dateTime;
+	}
+
 }
