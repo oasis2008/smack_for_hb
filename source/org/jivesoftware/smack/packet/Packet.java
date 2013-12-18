@@ -113,8 +113,8 @@ public abstract class Packet {
     private final Map<String,Object> properties = new HashMap<String, Object>();
     private XMPPError error = null;
     
-    private String messageId = null;
-    private String dateTime = null;
+    protected String messageId = null;
+    protected String dateTime = null;
 
     public Packet() {
     }
