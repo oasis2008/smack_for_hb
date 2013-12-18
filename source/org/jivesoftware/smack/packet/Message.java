@@ -58,10 +58,8 @@ public class Message extends Packet {
     private final Set<Body> bodies = new HashSet<Body>();
 
     // custom stanza
-    private String messageId = null;
 	private String attachmentType = null;
 	private String attachmentId = null;
-	private String dateTime = null;
 
     /**
      * Creates a new, "normal" message.
@@ -695,20 +693,4 @@ public class Message extends Packet {
 		return this.attachmentId;
 	}
 	
-	public void setMessageId(String messageId) {
-		this.messageId = messageId;
-	}
-
-	public String getMessageId() {
-		return this.messageId;
-	}
-	
-	public void setDateTime(String dateTime) {
-		this.dateTime = dateTime;
-	}
-	
-	public String getDateTime() {
-		return this.dateTime;
-	}
-
 }

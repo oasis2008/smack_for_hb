@@ -112,6 +112,9 @@ public abstract class Packet {
 
     private final Map<String,Object> properties = new HashMap<String, Object>();
     private XMPPError error = null;
+    
+    private String messageId = null;
+    private String dateTime = null;
 
     public Packet() {
     }
@@ -506,5 +509,21 @@ public abstract class Packet {
         result = 31 * result + (error != null ? error.hashCode() : 0);
         return result;
     }
+    
+    public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+    
+    public String getMessageId() {
+		return this.messageId;
+	}
+	
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+	
+	public String getDateTime() {
+		return this.dateTime;
+	}
 
 }
