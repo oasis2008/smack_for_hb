@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="build">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/mockito-all-1.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/powermock-mockito-1.3.5-full.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/javassist-3.10.0.GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/asm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/jaxen.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/pmd.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/ant-contrib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/objenesis-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

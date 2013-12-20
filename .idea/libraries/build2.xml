@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="build">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/build/java-xmlbuilder-0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/build/xmlunit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/build/biz.aQute.bnd.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
