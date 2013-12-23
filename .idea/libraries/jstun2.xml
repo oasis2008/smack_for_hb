@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="jstun">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/jingle/extension/build/merge/jstun.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
