@@ -4,7 +4,7 @@ import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.provider.IQProvider;
 import org.xmlpull.v1.XmlPullParser;
 
-import com.huoban.xmpp.model.ChatHistory;
+import org.jivesoftware.custom.packet.ChatHistory;
 
 /**
  * The HistoryChatProvider parses ChatHistory packets. (@see ChatHistory)

@@ -1,15 +1,16 @@
 package org.jivesoftware.custom;
 
 import org.jivesoftware.custom.packet.ChatHistory;
+import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.ServiceDiscoveryManager;
 
 /**
  * Created by clerkmaxwell on 13-12-24.
  */
-public class ChatMessaegList {
+public class ChatMessageList {
 
-    public static ChatHistory retrieveChatHistory(String targetJID,
+    public static ChatHistory retrieveChatHistory(Connection connection, String targetJID,
                      String UTC, String limit, String index, String offset) {
         try {
             ChatHistory chatHistory = ServiceDiscoveryManager
