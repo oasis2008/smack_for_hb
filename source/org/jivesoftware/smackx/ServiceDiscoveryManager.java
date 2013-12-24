@@ -20,6 +20,10 @@
 
 package org.jivesoftware.smackx;
 
+import org.jivesoftware.custom.packet.ChatHistory;
+import org.jivesoftware.custom.packet.Conversation;
+import org.jivesoftware.custom.packet.RetrieveChatHistory;
+import org.jivesoftware.custom.packet.RetrieveConversationList;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketIDFilter;
@@ -610,6 +614,54 @@ public class ServiceDiscoveryManager {
             throw new XMPPException(result.getError());
         }
         return (DiscoverItems) result;
+    }
+
+    public ChatHistory retrieveChatHistory(String targetJID, String UTC, String limit, String index, String offset) throws XMPPException {
+        Connection connection = ServiceDiscoveryManager.this.connection.get();
+        if (connection == null) throw new XMPPException("Connection instance already gc'ed");
+
+        RetrieveChatHistory retrieve = new RetrieveChatHistory(targetJID, UTC, limit, index, offset);
+        retrieve.setType(IQ.Type.GET);
+        // Create a packet collector to listen for a response.
+        PacketCollector collector =
+                connection.createPacketCollector(new PacketIDFilter(retrieve.getPacketID()));
+
+        connection.sendPacket(retrieve);
+
+        IQ result = (IQ) collector.nextResult(SmackConfiguration.getPacketReplyTimeout());
+        collector.cancel();
+        if (result == null) {
+            throw new XMPPException("No response from the server.");
+        }
+        if (result.getType() == IQ.Type.ERROR) {
+            throw new XMPPException(result.getError());
+        }
+        return (ChatHistory) result;
+    }
+
+    public Conversation retrieveConversationList(String max, String index, String after) throws XMPPException {
+        Connection connection = ServiceDiscoveryManager.this.connection.get();
+        if (connection == null) throw new XMPPException("Connection instance already gc'ed");
+
+        RetrieveConversationList retrieve = new RetrieveConversationList(max, index, after);
+        retrieve.setType(IQ.Type.GET);
+
+        // Create a packet collector to listen for a response.
+        PacketCollector collector =
+                connection.createPacketCollector(new PacketIDFilter(retrieve.getPacketID()));
+
+        connection.sendPacket(retrieve);
+
+        IQ result = (IQ) collector.nextResult(SmackConfiguration.getPacketReplyTimeout());
+        collector.cancel();
+        if (result == null) {
+            throw new XMPPException("No response from the server.");
+        }
+        if (result.getType() == IQ.Type.ERROR) {
+            throw new XMPPException(result.getError());
+        }
+        return (Conversation)result;
+
     }
 
     /**
