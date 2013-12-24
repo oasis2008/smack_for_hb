@@ -36,6 +36,7 @@ public class HistoryChatProvider implements IQProvider {
 					String target = parser.getAttributeValue("", "with");
 					String start = parser.getAttributeValue("", "start");
 					String type = parser.getAttributeValue("", "type");
+                    chatHistory.setChatType(type);
 				} else if (elementName.equalsIgnoreCase("message")) {
 					chatHistory.addMessage(parseMessage(parser));
 				} else if (elementName.equalsIgnoreCase("set")) {
@@ -78,7 +79,10 @@ public class HistoryChatProvider implements IQProvider {
 					message.setFrom(from);
 					message.setTo(to);
 					message.setType(type);
-				} else if (elementName.equalsIgnoreCase("delay")) {
+				} else if (elementName.equalsIgnoreCase("body")) {
+                    String body = parser.nextText();
+                    message.setBody(body);
+                } else if (elementName.equalsIgnoreCase("delay")) {
 //					String from = parser.getAttributeValue("", "from");
 					String stamp = parser.getAttributeValue("", "stamp");
 					message.setStamp(stamp);
