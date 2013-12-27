@@ -13,6 +13,8 @@ public class RetrieveChatHistory extends IQ {
 	
 	public RetrieveChatHistory(String targetJID, String UTC, String limit, String index, String offset) {
 		this.targetJID = targetJID;
+        String server = targetJID.split("@")[1];
+        if (server.startsWith("conference")) chatType = "groupchat";
 		this.UTC = UTC;
 		this.limit = limit;
 		this.index = index;
