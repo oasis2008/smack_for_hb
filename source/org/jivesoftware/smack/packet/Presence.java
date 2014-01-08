@@ -322,7 +322,12 @@ public class Presence extends Packet {
         /**
          * The presence packet contains an error message.
          */
-        error
+        error,
+
+        /**
+         *  Other
+         */
+        other
     }
 
     /**
