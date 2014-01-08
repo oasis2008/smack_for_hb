@@ -832,6 +832,9 @@ public class Roster {
     private class PresencePacketListener implements PacketListener {
 
         public void processPacket(Packet packet) {
+
+            System.err.println("PresencePacketListener processPacket----ivfuricks");
+
             Presence presence = (Presence) packet;
             String from = presence.getFrom();
             String key = getPresenceMapKey(from);
@@ -936,6 +939,12 @@ public class Roster {
                 RosterEntry entry = entries.get(key);
                 if (entry != null) {
                     fireRosterPresenceEvent(presence);
+                }
+            }
+
+            else {
+                for (RosterListener listener : rosterListeners) {
+                    listener.presenceNotify();
                 }
             }
         }

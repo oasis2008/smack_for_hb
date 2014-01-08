@@ -87,6 +87,8 @@ public class Conversation extends IQ implements Serializable {
 		private String messageId = null;
 		private String body = null;
 		private Delay delay = null;
+        private String fileId = null;
+        private String fileType = null;
 		
 		public String getTo() {
 			return to;
@@ -130,8 +132,23 @@ public class Conversation extends IQ implements Serializable {
 		public void setDelay(Delay delay) {
 			this.delay = delay;
 		}
-		
-	}
+
+        public String getFileId() {
+            return fileId;
+        }
+
+        public void setFileId(String fileId) {
+            this.fileId = fileId;
+        }
+
+        public String getFileType() {
+            return fileType;
+        }
+
+        public void setFileType(String fileType) {
+            this.fileType = fileType;
+        }
+    }
 	
 	public static class Delay implements Serializable {
 		

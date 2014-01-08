@@ -199,7 +199,7 @@ public class PacketParserUtils {
      * @throws Exception if an exception occurs while parsing the packet.
      */
     public static Presence parsePresence(XmlPullParser parser) throws Exception {
-        Presence.Type type = Presence.Type.available;
+        Presence.Type type = Presence.Type.other; // Presence.Type.available
         String typeString = parser.getAttributeValue("", "type");
         if (typeString != null && !typeString.equals("")) {
             try {

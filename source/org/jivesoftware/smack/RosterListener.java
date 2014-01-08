@@ -80,4 +80,6 @@ public interface RosterListener {
      * @see Roster#getPresence(String)
      */
     public void presenceChanged(Presence presence);
+
+    public void presenceNotify();
 }

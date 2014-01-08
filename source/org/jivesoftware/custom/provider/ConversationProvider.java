@@ -98,9 +98,11 @@ public class ConversationProvider implements IQProvider {
 	            	String body = parser.nextText();
 	            	message.setBody(body);
 	            } else if (elementName.equalsIgnoreCase("playload")) { // 有附件的情况
-	            	String body = parser.nextText();
-	            	message.setBody(body);
-	            } 
+	            	String fileId = parser.getAttributeValue("", "id");
+                    String fileType = parser.getAttributeValue("", "type");
+                    message.setFileId(fileId);
+                    message.setFileType(fileType);
+	            }
 			} else if (eventType == XmlPullParser.END_TAG) {
 				if (parser.getName().equalsIgnoreCase("item"))
 					done = true;
