@@ -15,7 +15,6 @@ public class RetrieveHBSession extends IQ {
 		if (this.with != null && !this.with.equals("")) 
 			isGroup = false;
 		
-		setType(Type.SET);
 		setTo("session.socket.huoban.com");
 	}
 

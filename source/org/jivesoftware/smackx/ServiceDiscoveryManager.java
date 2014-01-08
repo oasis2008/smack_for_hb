@@ -671,7 +671,7 @@ public class ServiceDiscoveryManager {
         if (connection == null) throw new XMPPException("Connection instance already gc'ed");
 
         RetrieveHBSession retrieve = new RetrieveHBSession(with);
-        retrieve.setType(IQ.Type.GET);
+        retrieve.setType(IQ.Type.SET);
 
         // Create a packet collector to listen for a response.
         PacketCollector collector =
