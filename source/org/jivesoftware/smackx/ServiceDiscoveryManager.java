@@ -22,8 +22,10 @@ package org.jivesoftware.smackx;
 
 import org.jivesoftware.custom.packet.ChatHistory;
 import org.jivesoftware.custom.packet.Conversation;
+import org.jivesoftware.custom.packet.HBSession;
 import org.jivesoftware.custom.packet.RetrieveChatHistory;
 import org.jivesoftware.custom.packet.RetrieveConversationList;
+import org.jivesoftware.custom.packet.RetrieveHBSession;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketIDFilter;
@@ -662,6 +664,30 @@ public class ServiceDiscoveryManager {
         }
         return (Conversation)result;
 
+    }
+
+    public HBSession retriveHBSession(String with)  throws  XMPPException {
+        Connection connection = ServiceDiscoveryManager.this.connection.get();
+        if (connection == null) throw new XMPPException("Connection instance already gc'ed");
+
+        RetrieveHBSession retrieve = new RetrieveHBSession(with);
+        retrieve.setType(IQ.Type.GET);
+
+        // Create a packet collector to listen for a response.
+        PacketCollector collector =
+                connection.createPacketCollector(new PacketIDFilter(retrieve.getPacketID()));
+
+        connection.sendPacket(retrieve);
+
+        IQ result = (IQ) collector.nextResult(SmackConfiguration.getPacketReplyTimeout());
+        collector.cancel();
+        if (result == null) {
+            throw new XMPPException("No response from the server.");
+        }
+        if (result.getType() == IQ.Type.ERROR) {
+            throw new XMPPException(result.getError());
+        }
+        return (HBSession)result;
     }
 
     /**
