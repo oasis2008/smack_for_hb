@@ -31,10 +31,12 @@ public class HBSessionProvider implements IQProvider {
 	            	String sid = parser.getAttributeValue("", "sid");
 	            	String chatType = parser.getAttributeValue("", "type");
 	            	String with = parser.getAttributeValue("", "with");
+                    String name = parser.getAttributeValue("", "name");
 	            	
 	            	session.setSid(sid);
 	            	session.setChatType(chatType);
 	            	session.setWith(with);
+                    session.setName(name);
 	            } 
 			} else if(eventType == XmlPullParser.END_TAG) {
 				if (parser.getName().equalsIgnoreCase(SESSION_ELEMENTNAME))

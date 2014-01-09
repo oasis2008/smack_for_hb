@@ -7,6 +7,7 @@ public class HBSession extends IQ {
 	private String sid = null;
 	private String chatType = null;
 	private String with = null;
+    private String name = null; // 群名字
 	
 	public String getSid() {
 		return sid;
@@ -32,7 +33,15 @@ public class HBSession extends IQ {
 		this.with = with;
 	}
 
-	@Override
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
 	public String getChildElementXML() {
 		
 		return null;
