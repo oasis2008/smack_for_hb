@@ -57,6 +57,7 @@ public class Conversation extends IQ implements Serializable {
 		private Message message = null;
         private String name = null;
         private String unread = null;
+        private String member = null; // 单聊聊天对方
 
 		public String getJid() {
 			return jid;
@@ -91,6 +92,14 @@ public class Conversation extends IQ implements Serializable {
 
         public void setUnread(String unread) {
             this.unread = unread;
+        }
+
+        public String getMember() {
+            return member;
+        }
+
+        public void setMember(String member) {
+            this.member = member;
         }
     }
 	

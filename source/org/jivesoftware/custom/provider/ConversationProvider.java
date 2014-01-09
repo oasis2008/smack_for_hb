@@ -81,7 +81,10 @@ public class ConversationProvider implements IQProvider {
 	            	item.setType(type);
                     item.setUnread(unread);
                     item.setName(name);
-				} else if (elementName.equalsIgnoreCase("message")) {
+				} else if (elementName.equalsIgnoreCase("member")) {
+                    String jid = parser.getAttributeValue("", "jid");
+                    item.setMember(jid);
+                } else if (elementName.equalsIgnoreCase("message")) {
 	            	String to = parser.getAttributeValue("", "to");
 	            	String type = parser.getAttributeValue("", "type");
 	            	String from = parser.getAttributeValue("", "from");
