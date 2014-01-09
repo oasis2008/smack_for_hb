@@ -115,6 +115,7 @@ public abstract class Packet {
     
     protected String messageId = null;
     protected String dateTime = null;
+    protected String user = null;
 
     public Packet() {
     }
@@ -526,4 +527,11 @@ public abstract class Packet {
 		return this.dateTime;
 	}
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }
