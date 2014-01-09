@@ -12,10 +12,10 @@ import org.jivesoftware.custom.packet.HBSession;
 public class SessionCreator {
 
 
-    public static HBSession retrieveHBSession(Connection connection, String with) {
+    public static HBSession retrieveHBSession(Connection connection, String with, String name) {
         try {
             HBSession session = ServiceDiscoveryManager
-                    .getInstanceFor(connection).retriveHBSession(with);
+                    .getInstanceFor(connection).retriveHBSession(with, name);
             return session;
         }
         catch (XMPPException e) {

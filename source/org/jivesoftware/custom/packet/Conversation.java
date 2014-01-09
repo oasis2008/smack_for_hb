@@ -115,7 +115,7 @@ public class Conversation extends IQ implements Serializable {
 		private String type = null;
 		private String messageId = null;
 		private String body = null;
-		private Delay delay = null; // deprecated
+		private Delay delay = null;
         private String fileId = null;
         private String fileType = null;
 		
