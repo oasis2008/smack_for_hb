@@ -53,19 +53,22 @@ public class Conversation extends IQ implements Serializable {
 		private static final long serialVersionUID = 458084856438969918L;
 		
 		private String jid = null;
-		private String typ = null;
+		private String type = null;
 		private Message message = null;
+        private String name = null;
+        private String unread = null;
+
 		public String getJid() {
 			return jid;
 		}
 		public void setJid(String jid) {
 			this.jid = jid;
 		}
-		public String getTyp() {
-			return typ;
+		public String getType() {
+			return type;
 		}
-		public void setTyp(String typ) {
-			this.typ = typ;
+		public void setType(String type) {
+			this.type = type;
 		}
 		public Message getMessage() {
 			return message;
@@ -73,20 +76,36 @@ public class Conversation extends IQ implements Serializable {
 		public void setMessage(Message message) {
 			this.message = message;
 		}
-		
-	}
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getUnread() {
+            return unread;
+        }
+
+        public void setUnread(String unread) {
+            this.unread = unread;
+        }
+    }
 	
 	public static class Message implements Serializable {
 		
 		private static final long serialVersionUID = -5747149283817191164L;
 		
-		private String to = null;
+		private String to = null;  // deprecated
 		private String from = null;
-		private String dateTime = null;
+		private String dateTime = null; // deprecated
+        private String user = null;
 		private String type = null;
 		private String messageId = null;
 		private String body = null;
-		private Delay delay = null;
+		private Delay delay = null; // deprecated
         private String fileId = null;
         private String fileType = null;
 		
@@ -147,6 +166,14 @@ public class Conversation extends IQ implements Serializable {
 
         public void setFileType(String fileType) {
             this.fileType = fileType;
+        }
+
+        public String getUser() {
+            return user;
+        }
+
+        public void setUser(String user) {
+            this.user = user;
         }
     }
 	

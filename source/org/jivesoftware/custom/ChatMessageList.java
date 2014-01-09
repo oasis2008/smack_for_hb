@@ -25,10 +25,10 @@ public class ChatMessageList {
 
     }
 
-    public static Conversation retrieveConversationList(Connection connection, String max, String index, String after) {
+    public static Conversation retrieveConversationList(Connection connection, String max, String index, String before) {
         try {
             Conversation conversation = ServiceDiscoveryManager
-                    .getInstanceFor(connection).retrieveConversationList(max, index, after);
+                    .getInstanceFor(connection).retrieveConversationList(max, index, before);
             return conversation;
         }
         catch (XMPPException e) {

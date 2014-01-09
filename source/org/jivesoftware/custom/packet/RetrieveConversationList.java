@@ -6,21 +6,21 @@ public class RetrieveConversationList extends IQ {
 
 	private String max;
 	private String index;
-	private String after;
+	private String before;
 	
-	public RetrieveConversationList(String max, String index, String after) {
+	public RetrieveConversationList(String max, String index, String before) {
 		this.max = max;
 		this.index = index;
-		this.after = after;
+		this.before = before;
 	}
 	
 	@Override
 	public String getChildElementXML() {
-		return "<retrieve xmlns=\"urn:xmpp:hb_fast_session\">" 
-				+ "<set>" // "<set xmlns=\"http://jabber.org/protocol/rsm\">"
+		return "<retrieve xmlns=\"urn:xmpp:hb_session_log\">"
+				+ "<set>"
 				+ "<max>" + max + "</max>"
 				+ "<index>" + index + "</index>"
-				+ "<after>" + after + "</after>"
+				+ "<before>" + before + "</before>"
 				+ "</set>"
 				+ "</retrieve>";
 	}

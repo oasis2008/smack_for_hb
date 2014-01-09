@@ -8,7 +8,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class ConversationProvider implements IQProvider {
 
-	public static final String CONVERSATION_NAMESPACE = "urn:xmpp:hb_fast_session";
+	public static final String CONVERSATION_NAMESPACE = "urn:xmpp:hb_session_log";
     public static final String CONVERSATION_ELEMENT_NAME = "retrieve";
     public static final String CONVERSATION_ITEM_NAMESPACE = "http://jabber.org/protocol/rsm";
     
@@ -75,20 +75,26 @@ public class ConversationProvider implements IQProvider {
 				if (elementName.equalsIgnoreCase("item")) {
 					String jid = parser.getAttributeValue("", "jid");
 	            	String type = parser.getAttributeValue("", "type");
+                    String name = parser.getAttributeValue("", "name");
+                    String unread = parser.getAttributeValue("", "unread");
 	            	item.setJid(jid);
-	            	item.setTyp(type);
+	            	item.setType(type);
+                    item.setUnread(unread);
+                    item.setName(name);
 				} else if (elementName.equalsIgnoreCase("message")) {
 	            	String to = parser.getAttributeValue("", "to");
 	            	String type = parser.getAttributeValue("", "type");
 	            	String from = parser.getAttributeValue("", "from");
-	            	String messageId = parser.getAttributeValue("", "messageid");
+	            	String messageId = parser.getAttributeValue("", "mid");
 	            	String dateTime = parser.getAttributeValue("", "datetime");
+                    String user = parser.getAttributeValue("", "user");
 	            	
 	            	message.setTo(to);
 	            	message.setFrom(from);
 	            	message.setType(type);
 	            	message.setMessageId(messageId);
 	            	message.setDateTime(dateTime);
+                    message.setUser(user);
 	            } else if (elementName.equalsIgnoreCase("delay")) {
 	            	String from = parser.getAttributeValue("", "from");
 	            	String timeStamp = parser.getAttributeValue("", "stamp");

@@ -641,11 +641,11 @@ public class ServiceDiscoveryManager {
         return (ChatHistory) result;
     }
 
-    public Conversation retrieveConversationList(String max, String index, String after) throws XMPPException {
+    public Conversation retrieveConversationList(String max, String index, String before) throws XMPPException {
         Connection connection = ServiceDiscoveryManager.this.connection.get();
         if (connection == null) throw new XMPPException("Connection instance already gc'ed");
 
-        RetrieveConversationList retrieve = new RetrieveConversationList(max, index, after);
+        RetrieveConversationList retrieve = new RetrieveConversationList(max, index, before);
         retrieve.setType(IQ.Type.GET);
 
         // Create a packet collector to listen for a response.
