@@ -10,6 +10,7 @@ public class ConversationProvider implements IQProvider {
 
 	public static final String CONVERSATION_NAMESPACE = "urn:xmpp:hb_session_log";
     public static final String CONVERSATION_ELEMENT_NAME = "retrieve";
+    public static final String CONVERSATION_GROUP_ELEMENT_NAME = "retrievegroupchat";
     public static final String CONVERSATION_ITEM_NAMESPACE = "http://jabber.org/protocol/rsm";
     
 	@Override
@@ -29,7 +30,10 @@ public class ConversationProvider implements IQProvider {
 	            if (elementName.equalsIgnoreCase("retrieve") 
 	            		&& namespace.equalsIgnoreCase(CONVERSATION_NAMESPACE)) {
 	            	
-	            } else if (elementName.equalsIgnoreCase("item") && namespace.equalsIgnoreCase(CONVERSATION_NAMESPACE)) {
+	            } else if (elementName.equalsIgnoreCase("retrievegroupchat")
+                        && namespace.equalsIgnoreCase(CONVERSATION_NAMESPACE)) {
+
+                } else if (elementName.equalsIgnoreCase("item") && namespace.equalsIgnoreCase(CONVERSATION_NAMESPACE)) {
 	            	conversation.addItem(parseItem(parser));
 	            } else if (elementName.equalsIgnoreCase("set") 
 	            		&& namespace.equals(CONVERSATION_ITEM_NAMESPACE)) {
@@ -49,7 +53,8 @@ public class ConversationProvider implements IQProvider {
 	            } 
 	           
 			} else if(eventType == XmlPullParser.END_TAG) {
-				if (parser.getName().equalsIgnoreCase("retrieve"))
+				if (parser.getName().equalsIgnoreCase("retrieve")
+                        || parser.getName().equalsIgnoreCase("retrievegroupchat"))
 					done = true;
 			} else if(eventType == XmlPullParser.TEXT) {
 				

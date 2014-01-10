@@ -36,4 +36,16 @@ public class ChatMessageList {
             return null;
         }
     }
+
+    public static Conversation retrieveGroupConversationList(Connection connection, String max, String index, String before) {
+        try {
+            Conversation conversation = ServiceDiscoveryManager
+                    .getInstanceFor(connection).retrieveGroupConversationList(max, index, before);
+            return conversation;
+        }
+        catch (XMPPException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

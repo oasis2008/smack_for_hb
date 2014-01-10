@@ -25,6 +25,7 @@ import org.jivesoftware.custom.packet.Conversation;
 import org.jivesoftware.custom.packet.HBSession;
 import org.jivesoftware.custom.packet.RetrieveChatHistory;
 import org.jivesoftware.custom.packet.RetrieveConversationList;
+import org.jivesoftware.custom.packet.RetrieveGroupConversationList;
 import org.jivesoftware.custom.packet.RetrieveHBSession;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.filter.PacketFilter;
@@ -646,6 +647,31 @@ public class ServiceDiscoveryManager {
         if (connection == null) throw new XMPPException("Connection instance already gc'ed");
 
         RetrieveConversationList retrieve = new RetrieveConversationList(max, index, before);
+        retrieve.setType(IQ.Type.GET);
+
+        // Create a packet collector to listen for a response.
+        PacketCollector collector =
+                connection.createPacketCollector(new PacketIDFilter(retrieve.getPacketID()));
+
+        connection.sendPacket(retrieve);
+
+        IQ result = (IQ) collector.nextResult(SmackConfiguration.getPacketReplyTimeout());
+        collector.cancel();
+        if (result == null) {
+            throw new XMPPException("No response from the server.");
+        }
+        if (result.getType() == IQ.Type.ERROR) {
+            throw new XMPPException(result.getError());
+        }
+        return (Conversation)result;
+
+    }
+
+    public Conversation retrieveGroupConversationList(String max, String index, String before) throws XMPPException {
+        Connection connection = ServiceDiscoveryManager.this.connection.get();
+        if (connection == null) throw new XMPPException("Connection instance already gc'ed");
+
+        RetrieveGroupConversationList retrieve = new RetrieveGroupConversationList(max, index, before);
         retrieve.setType(IQ.Type.GET);
 
         // Create a packet collector to listen for a response.
